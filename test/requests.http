@@ -1,5 +1,34 @@
-# 
-GET  http://localhost:3000/teste HTTP/1.1
+# pega todas pessoas
+GET  http://localhost:3000/pessoas HTTP/1.1
 Content-Type: application/json
+ 
+###
+
+# pega uma pessoa
+GET  http://localhost:3000/pessoas/3 HTTP/1.1
+Content-Type: application/json
+ 
+###
+
+# cria pessoa
+POST   http://localhost:3000/pessoas HTTP/1.1
+Content-Type: application/json
+
+{ "nome": "Stalone", "ativo": "true", "email": "stalone@gmail.com", "role": "administrator"}
+ 
+###
+
+# atualiza pessoa
+PUT  http://localhost:3000/pessoas/7 HTTP/1.1
+Content-Type: application/json
+
+{ "role": "Rambo"}
+ 
+###
+
+# deleta pessoa
+DELETE  http://localhost:3000/pessoas/7 HTTP/1.1
+Content-Type: application/json
+
  
 ###
