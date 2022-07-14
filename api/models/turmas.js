@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
   class turmas extends Model {
     /**
@@ -11,17 +9,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       turmas.hasMany(models.matriculas, {
-        foreignKey: 'turma_id'
-      })
-      turmas.belongsTo(models.Pessoas)
-      turmas.belongsTo(models.niveis)
+        foreignKey: "turma_id",
+      });
+      turmas.belongsTo(models.Pessoas, {
+        foreignKey: "docente_id",
+      });
+      turmas.belongsTo(models.niveis, {
+        foreignKey: "nivel_id",
+      });
     }
   }
-  turmas.init({
-    data_inicio: DataTypes.DATEONLY
-  }, {
-    sequelize,
-    modelName: 'turmas',
-  });
+  turmas.init(
+    {
+      data_inicio: DataTypes.DATEONLY,
+    },
+    {
+      sequelize,
+      modelName: "turmas",
+    }
+  );
   return turmas;
 };
